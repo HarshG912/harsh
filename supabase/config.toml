@@ -1,0 +1,30 @@
+# Supabase Configuration
+# Update project_id when deploying to a new Supabase project
+project_id = "orfpyzsyhnorsqqdcrvn"
+
+[functions.create-razorpay-order]
+verify_jwt = true
+
+[functions.verify-razorpay-payment]
+verify_jwt = false
+
+[functions.generate-payment-url]
+verify_jwt = true
+
+[functions.create-tenant-user]
+verify_jwt = true
+
+[functions.update-tenant-user]
+verify_jwt = true
+
+[functions.razorpay-webhook]
+verify_jwt = false
+
+[functions.create-subscription-order]
+verify_jwt = true
+
+[functions.verify-subscription-payment]
+verify_jwt = false
+
+[functions.process-plan-change]
+verify_jwt = true
