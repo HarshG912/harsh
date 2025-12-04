@@ -27,6 +27,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import { TenantProvider } from "./contexts/TenantContext";
 import { TenantLayout } from "./components/layouts/TenantLayout";
+import { TableNormalizer } from "./components/layouts/TableNormalizer";
 import { UniversalAdminRoute } from "./components/routes/UniversalAdminRoute";
 import { TenantRoute } from "./components/routes/TenantRoute";
 import PlansOpen from "@/pages/plansopen";
@@ -95,9 +96,11 @@ const App = () => (
 
             {/* Tenant-specific routes */}
             <Route path="/:tenantId" element={<TenantLayout />}>
-              {/* Public routes - no authentication required */}
-              <Route path="table/:tableNumber" element={<TenantMenu />} />
-              <Route path="cart/:tableNumber" element={<TenantCart />} />
+               {/* Table routes with normalization to prevent leading zeros bypass */}
+              <Route element={<TableNormalizer />}>
+                <Route path="table/:tableNumber" element={<TenantMenu />} />
+                <Route path="cart/:tableNumber" element={<TenantCart />} />
+              </Route>
               <Route path="billing" element={<TenantBilling />} />
               <Route
                 path="admin"
